@@ -25,7 +25,7 @@ const FontLoader = () => (
     @keyframes breatheIn { 0% { transform:scale(1); opacity:0.6;} 100% { transform:scale(1.5); opacity:1;} }
     @keyframes breatheOut { 0% { transform:scale(1.5); opacity:1;} 100% { transform:scale(1); opacity:0.6;} }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .screen { min-height:100dvh; display:flex; flex-direction:column; }
+    .screen { min-height:100dvh; display:flex; flex-direction:column; width:100%; }
 
     /* NAV */
     .nav { display:flex; align-items:center; justify-content:space-between; padding:18px 32px; border-bottom:1px solid var(--border); background:var(--bg); position:sticky; top:0; z-index:100; }

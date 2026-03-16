@@ -36,7 +36,7 @@ const FontLoader = () => (
     .nav-link:hover { color:var(--text); background:var(--bg2); }
 
     /* LANDING */
-    .landing-center { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:60px 24px; text-align:center; }
+    .landing-center { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:60px 24px; text-align:center; width:100%; }
     .confidential-badge { display:inline-flex; align-items:center; gap:6px; background:var(--bg2); border:1px solid var(--border); border-radius:20px; padding:6px 14px; font-size:12px; color:var(--text2); margin-bottom:40px; animation:fadeUp 0.4s 0.1s ease both; }
     .landing-h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(42px,7vw,72px); font-weight:500; line-height:1.1; color:var(--text); animation:fadeUp 0.4s 0.2s ease both; }
     .landing-h1 span { color:var(--accent); }

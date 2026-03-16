@@ -12,7 +12,7 @@ const FontLoader = () => (
       --user-bubble: #5C4D40; --user-text: #F5F1EC;
       --radius: 12px; --shadow: 0 2px 12px rgba(0,0,0,0.07);
     }
-    html, body, #root { height: 100%; }
+    html, body, #root { height: 100%; width: 100%; display: flex; flex-direction: column; }
     body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
     body::before {
       content: ''; position: fixed; inset: 0;

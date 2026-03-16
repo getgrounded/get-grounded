@@ -282,7 +282,7 @@ const lsSet       = (k,v) => { try{ localStorage.setItem(k,JSON.stringify(v)); }
 
 // ── API ───────────────────────────────────────────────────────────────────────
 async function callClaude(messages, system) {
-  const r = await fetch("https://api.anthropic.com/v1/messages",{
+  const r = await fetch("/api/chat",{
     method:"POST", headers:{"Content-Type":"application/json"},
     body:JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:1000, system, messages }),
   });
@@ -291,7 +291,7 @@ async function callClaude(messages, system) {
 }
 async function genTitle(messages) {
   const convo = messages.slice(0,8).map(m=>`${m.role}: ${m.content}`).join("\n");
-  const r = await fetch("https://api.anthropic.com/v1/messages",{
+  const r = await fetch("/api/chat",{
     method:"POST", headers:{"Content-Type":"application/json"},
     body:JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:20,
       messages:[{role:"user",content:`Give a private 4–6 word title for this reflection. Only the title.\n\n${convo}`}] }),
@@ -301,7 +301,7 @@ async function genTitle(messages) {
 }
 async function genSummary(messages) {
   const convo = messages.map(m=>`${m.role}: ${m.content}`).join("\n");
-  const r = await fetch("https://api.anthropic.com/v1/messages",{
+  const r = await fetch("/api/chat",{
     method:"POST", headers:{"Content-Type":"application/json"},
     body:JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:220,
       messages:[{role:"user",content:`Write a warm, private 3–4 sentence summary of this reflection session. Third person. Return only the summary.\n\n${convo}`}] }),

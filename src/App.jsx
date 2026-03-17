@@ -325,7 +325,27 @@ function useAuth() {
     if (!u) return "Invalid email or password.";
     setUser(u); lsSet("gg_user", u); return null;
   };
-  const signup = (email, pw) => {
+  const signup = async (email, pw) => {
+  if (!email||!pw) return "Please fill in all fields.";
+  if (pw.length<8) return "Password must be at least 8 characters.";
+  const users = ls("gg_users",[]);
+  if (users.find(u=>u.email===email)) return "An account with this email already exists.";
+  const nu = { id:Date.now(), email, password:pw, createdAt:new Date().toISOString() };
+  lsSet("gg_users",[...users,nu]); setUser(nu); lsSet("gg_user",nu);
+  
+  // Send welcome email
+  try {
+    await fetch("/api/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+  } catch (e) {
+    console.log("Email failed:", e);
+  }
+  
+  return null;
+};
     if (!email||!pw) return "Please fill in all fields.";
     if (pw.length<8) return "Password must be at least 8 characters.";
     const users = ls("gg_users",[]);

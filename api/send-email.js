@@ -17,7 +17,7 @@ export default async function handler(req, res) {
         "Authorization": `Bearer ${process.env.RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: "Get Grounded <onboarding@resend.dev>",
+        from: "Get Grounded <hello@getgroundedwellness.com>",
         to: email,
         subject: "Welcome to Get Grounded 🌿",
         html: `

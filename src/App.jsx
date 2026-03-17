@@ -346,13 +346,6 @@ function useAuth() {
   
   return null;
 };
-    if (!email||!pw) return "Please fill in all fields.";
-    if (pw.length<8) return "Password must be at least 8 characters.";
-    const users = ls("gg_users",[]);
-    if (users.find(u=>u.email===email)) return "An account with this email already exists.";
-    const nu = { id:Date.now(), email, password:pw, createdAt:new Date().toISOString() };
-    lsSet("gg_users",[...users,nu]); setUser(nu); lsSet("gg_user",nu); return null;
-  };
   const logout = () => { setUser(null); lsSet("gg_user",null); };
   return { user, login, signup, logout };
 }

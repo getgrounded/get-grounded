@@ -401,9 +401,9 @@ function AuthModal({ onClose, auth, defaultTab="signup", note="" }) {
   const [pw, setPw] = useState("");
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
-  const handle = () => {
+  const handle = async () => {
     setErr(""); setLoading(true);
-    const e = tab==="signup" ? auth.signup(email,pw) : auth.login(email,pw);
+    const e = tab==="signup" ? await auth.signup(email,pw) : auth.login(email,pw);
     setLoading(false);
     if (e) { setErr(e); return; }
     onClose(true);
